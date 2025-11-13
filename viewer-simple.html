@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الأحكام القانونية - عرض البيانات</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+        .controls {
+            padding: 20px;
+            background: #f8f9fa;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .search-box input {
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            width: 300px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-primary { background: #667eea; color: white; }
+        .stats-bar {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #e3f2fd;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        .stat-number {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+            text-align: right;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .pagination button.active {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 نظام عرض الأحكام القانونية</h1>
+        </div>
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 ابحث..." onkeypress="if(event.key==='Enter') performSearch()">
+            </div>
+            <button class="btn btn-primary" onclick="performSearch()">بحث</button>
+            <button class="btn btn-primary" onclick="loadJudgments()">تحديث</button>
+        </div>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="totalCount">-</div>
+                <div>إجمالي الأحكام</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="currentPage">-</div>
+                <div>الصفحة الحالية</div>
+            </div>
+        </div>
+        <div id="contentArea" style="padding:20px"></div>
+    </div>
+    <script>
+        let currentPage = 1;
+        const perPage = 50;
+        const API_BASE = 'http://localhost:5000';
+        
+        window.addEventListener('DOMContentLoaded', () => loadJudgments());
+        
+        async function loadJudgments(page = 1, search = '') {
+            try {
+                const url = `${API_BASE}/api/judgments?page=${page}&per_page=${perPage}${search ? '&search=' + encodeURIComponent(search) : ''}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayJudgments(data.judgments, data.headers);
+                    displayPagination(data.pagination);
+                    updateStats(data.pagination);
+                }
+            } catch (error) {
+                document.getElementById('contentArea').innerHTML = '<div style="text-align:center;color:red">خطأ في تحميل البيانات</div>';
+            }
+        }
+        
+        function displayJudgments(judgments, headers) {
+            if (judgments.length === 0) {
+                document.getElementById('contentArea').innerHTML = '<div style="text-align:center;padding:40px">لا توجد بيانات</div>';
+                return;
+            }
+            
+            const cols = headers.slice(0, 8);
+            let html = '<table><thead><tr><th>#</th>';
+            cols.forEach(h => html += `<th>${h}</th>`);
+            html += '</tr></thead><tbody>';
+            
+            judgments.forEach((j, i) => {
+                html += `<tr><td>${(currentPage - 1) * perPage + i + 1}</td>`;
+                cols.forEach(h => {
+                    const val = String(j[h] || '-');
+                    html += `<td>${val.length > 80 ? val.substring(0, 80) + '...' : val}</td>`;
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody></table>';
+            document.getElementById('contentArea').innerHTML = html;
+        }
+        
+        function displayPagination(p) {
+            let html = '<div class="pagination">';
+            html += `<button onclick="loadJudgments(1)" ${p.page === 1 ? 'disabled' : ''}>الأولى</button>`;
+            html += `<button onclick="loadJudgments(${p.page - 1})" ${!p.has_prev ? 'disabled' : ''}>السابق</button>`;
+            html += `<span style="padding:10px">صفحة ${p.page} من ${p.total_pages}</span>`;
+            html += `<button onclick="loadJudgments(${p.page + 1})" ${!p.has_next ? 'disabled' : ''}>التالي</button>`;
+            html += `<button onclick="loadJudgments(${p.total_pages})" ${p.page === p.total_pages ? 'disabled' : ''}>الأخيرة</button>`;
+            html += '</div>';
+            document.getElementById('contentArea').innerHTML += html;
+        }
+        
+        function updateStats(p) {
+            document.getElementById('totalCount').textContent = p.total.toLocaleString();
+            document.getElementById('currentPage').textContent = p.page;
+            currentPage = p.page;
+        }
+        
+        function performSearch() {
+            const search = document.getElementById('searchInput').value.trim();
+            loadJudgments(1, search);
+        }
+    </script>
+</body>
+</html>

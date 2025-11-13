@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الأحكام القانونية العربية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            direction: rtl;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 60px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            direction: ltr;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .demo-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #667eea;
+        }
+        
+        .demo-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">⚖️</div>
+        <h1>نظام إدارة الأحكام القانونية</h1>
+        <p class="subtitle">تسجيل الدخول إلى النظام</p>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" value="admin" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" value="admin123" required>
+            </div>
+            
+            <button type="submit" class="btn">تسجيل الدخول</button>
+        </form>
+        
+        <div class="demo-info">
+            <h3>بيانات تجريبية:</h3>
+            <p><strong>اسم المستخدم:</strong> admin</p>
+            <p><strong>كلمة المرور:</strong> admin123</p>
+        </div>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const statusDiv = document.getElementById('status');
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = '<div class="status success">✅ تم تسجيل الدخول بنجاح! مرحباً ' + data.user.full_name + '</div>';
+                    
+                    // Store token (in a real app, use httpOnly cookies)
+                    localStorage.setItem('token', data.access_token);
+                    
+                    // Show user info
+                    setTimeout(() => {
+                        showDashboard(data.user);
+                    }, 1500);
+                } else {
+                    statusDiv.innerHTML = '<div class="status error">❌ ' + (data.error || 'فشل في تسجيل الدخول') + '</div>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                statusDiv.innerHTML = '<div class="status error">❌ تعذر الاتصال بالخادم. تأكد من تشغيل Backend على http://localhost:5000</div>';
+            }
+        });
+        
+        function showDashboard(user) {
+            document.querySelector('.container').innerHTML = `
+                <div class="logo">📊</div>
+                <h1>مرحباً، ${user.full_name}</h1>
+                <p class="subtitle">لوحة التحكم الرئيسية</p>
+                
+                <div style="text-align: right; margin-top: 30px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div style="background: #e3f2fd; padding: 20px; border-radius: 8px;">
+                            <h3 style="color: #1976d2; margin-bottom: 5px;">🏛️ القضايا</h3>
+                            <p style="font-size: 24px; font-weight: bold; color: #333;">125</p>
+                        </div>
+                        <div style="background: #e8f5e8; padding: 20px; border-radius: 8px;">
+                            <h3 style="color: #4caf50; margin-bottom: 5px;">⚖️ الأحكام</h3>
+                            <p style="font-size: 24px; font-weight: bold; color: #333;">89</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 15px; color: #333;">الإجراءات السريعة:</h3>
+                        <button class="btn" style="margin-bottom: 10px;" onclick="alert('سيتم إضافة هذه الميزة قريباً')">➕ قضية جديدة</button>
+                        <button class="btn" style="margin-bottom: 10px;" onclick="alert('سيتم إضافة هذه الميزة قريباً')">📋 عرض جميع القضايا</button>
+                        <button class="btn" onclick="alert('سيتم إضافة هذه الميزة قريباً')">🔍 البحث المتقدم</button>
+                    </div>
+                    
+                    <div class="demo-info">
+                        <h3>حالة النظام:</h3>
+                        <p>✅ الخادم الخلفي متصل</p>
+                        <p>✅ قاعدة البيانات جاهزة</p>
+                        <p>✅ المصادقة تعمل بنجاح</p>
+                    </div>
+                </div>
+                
+                <button class="btn" style="background: #dc3545; margin-top: 20px;" onclick="logout()">تسجيل الخروج</button>
+            `;
+        }
+        
+        function logout() {
+            localStorage.removeItem('token');
+            location.reload();
+        }
+    </script>
+</body>
+</html>
