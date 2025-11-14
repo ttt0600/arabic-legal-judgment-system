@@ -40,7 +40,7 @@ https://github.com/settings/tokens → Generate new token (classic) → Select `
 git init
 git add .
 git commit -m "Initial commit: نظام إدارة الأحكام القانونية العربية v2.0"
-git remote add origin https://github.com/YOUR_USERNAME/arabic-legal-judgment-system.git
+git remote add origin https://github.com/ttt0600/arabic-legal-judgment-system.git
 git push -u origin main
 ```
 
@@ -48,7 +48,7 @@ git push -u origin main
 
 ## ✅ تحقق من النجاح
 
-افتح: https://github.com/YOUR_USERNAME/arabic-legal-judgment-system
+افتح: https://github.com/ttt0600/arabic-legal-judgment-system
 
 يجب أن ترى:
 - ✅ جميع ملفات المشروع
@@ -132,7 +132,7 @@ git push
 
 إذا رأيت مشروعك على GitHub، مبروك! 🎉
 
-**الرابط**: https://github.com/YOUR_USERNAME/arabic-legal-judgment-system
+**الرابط**: https://github.com/ttt0600/arabic-legal-judgment-system
 
 ### شارك نجاحك:
 

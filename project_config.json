@@ -1,0 +1,22 @@
+{
+  "github": {
+    "username": "ttt0600",
+    "repository": "arabic-legal-judgment-system",
+    "url": "https://github.com/ttt0600/arabic-legal-judgment-system"
+  },
+  "project": {
+    "name": "Arabic Legal Judgment System",
+    "name_ar": "نظام إدارة الأحكام القانونية العربية",
+    "version": "2.0",
+    "license": "MIT"
+  },
+  "urls": {
+    "frontend": "http://localhost:3000",
+    "backend": "http://localhost:5000",
+    "api": "http://localhost:5000/api"
+  },
+  "ports": {
+    "frontend": 3000,
+    "backend": 5000
+  }
+}

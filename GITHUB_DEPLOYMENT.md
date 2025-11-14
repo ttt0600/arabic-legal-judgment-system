@@ -93,8 +93,8 @@ git commit -m "Initial commit: نظام إدارة الأحكام القانون
 ### الخطوة 2: ربط بـ GitHub
 
 ```bash
-# استبدل YOUR_USERNAME باسم المستخدم الخاص بك
-git remote add origin https://github.com/YOUR_USERNAME/arabic-legal-judgment-system.git
+# استبدل ttt0600 باسم المستخدم الخاص بك
+git remote add origin https://github.com/ttt0600/arabic-legal-judgment-system.git
 
 # التحقق من الربط
 git remote -v
@@ -174,7 +174,7 @@ npm run deploy
 1. اذهب إلى Repository → Settings → Pages
 2. Source: اختر `gh-pages` branch
 3. اضغط Save
-4. سيكون الموقع متاح على: `https://YOUR_USERNAME.github.io/arabic-legal-judgment-system/`
+4. سيكون الموقع متاح على: `https://ttt0600.github.io/arabic-legal-judgment-system/`
 
 ---
 

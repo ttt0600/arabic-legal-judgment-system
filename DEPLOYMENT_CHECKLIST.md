@@ -47,8 +47,8 @@ git add .
 # أول Commit
 git commit -m "Initial commit: نظام إدارة الأحكام القانونية العربية v2.0"
 
-# ربط بـ GitHub (استبدل YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/arabic-legal-judgment-system.git
+# ربط بـ GitHub (استبدل ttt0600)
+git remote add origin https://github.com/ttt0600/arabic-legal-judgment-system.git
 
 # رفع الكود
 git branch -M main
@@ -145,10 +145,10 @@ git push
 ### أضف Badges إلى README
 
 ```markdown
-![Build Status](https://img.shields.io/github/workflow/status/YOUR_USERNAME/arabic-legal-judgment-system/CI)
-![License](https://img.shields.io/github/license/YOUR_USERNAME/arabic-legal-judgment-system)
-![Version](https://img.shields.io/github/v/release/YOUR_USERNAME/arabic-legal-judgment-system)
-![Stars](https://img.shields.io/github/stars/YOUR_USERNAME/arabic-legal-judgment-system?style=social)
+![Build Status](https://img.shields.io/github/workflow/status/ttt0600/arabic-legal-judgment-system/CI)
+![License](https://img.shields.io/github/license/ttt0600/arabic-legal-judgment-system)
+![Version](https://img.shields.io/github/v/release/ttt0600/arabic-legal-judgment-system)
+![Stars](https://img.shields.io/github/stars/ttt0600/arabic-legal-judgment-system?style=social)
 ```
 
 ### أضف Screenshots
@@ -282,6 +282,6 @@ git push origin feature/new-feature
 
 **🎊 مبروك! مشروعك الآن على GitHub 🎊**
 
-**الرابط**: https://github.com/YOUR_USERNAME/arabic-legal-judgment-system
+**الرابط**: https://github.com/ttt0600/arabic-legal-judgment-system
 
 </div>

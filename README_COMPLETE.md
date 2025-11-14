@@ -161,7 +161,7 @@ resolve: {
 ```bash
 # اضغط على زر Fork في GitHub
 # ثم استنسخ نسختك
-git clone https://github.com/YOUR_USERNAME/arabic-legal-judgment-system.git
+git clone https://github.com/ttt0600/arabic-legal-judgment-system.git
 cd arabic-legal-judgment-system
 ```
 
@@ -341,8 +341,8 @@ SOFTWARE.
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/username">
-        <img src="https://github.com/username.png" width="100px;" alt=""/>
+      <a href="https://github.com/ttt0600">
+        <img src="https://github.com/ttt0600.png" width="100px;" alt=""/>
         <br />
         <sub><b>الاسم هنا</b></sub>
       </a>
@@ -357,8 +357,8 @@ SOFTWARE.
 
 شكراً لكل من ساهم في هذا المشروع! 🙏
 
-<a href="https://github.com/your-repo/arabic-legal-judgment-system/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=your-repo/arabic-legal-judgment-system" />
+<a href="https://github.com/arabic-legal-judgment-system/arabic-legal-judgment-system/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=arabic-legal-judgment-system/arabic-legal-judgment-system" />
 </a>
 
 ---
@@ -370,9 +370,9 @@ SOFTWARE.
 | الطريقة | الرابط/البريد | الاستجابة |
 |---------|----------------|-----------|
 | 📧 البريد الإلكتروني | support@legal-system.com | 24-48 ساعة |
-| 💬 GitHub Discussions | [discussions](https://github.com/repo/discussions) | المجتمع |
-| 🐛 GitHub Issues | [issues](https://github.com/repo/issues) | 1-3 أيام |
-| 📚 الوثائق | [wiki](https://github.com/repo/wiki) | فوري |
+| 💬 GitHub Discussions | [discussions](https://github.com/ttt0600/arabic-legal-judgment-system/discussions) | المجتمع |
+| 🐛 GitHub Issues | [issues](https://github.com/ttt0600/arabic-legal-judgment-system/issues) | 1-3 أيام |
+| 📚 الوثائق | [wiki](https://github.com/ttt0600/arabic-legal-judgment-system/wiki) | فوري |
 | 💼 LinkedIn | [company-page](#) | للتعاون |
 
 ### ❓ الأسئلة الشائعة / FAQ
@@ -489,7 +489,7 @@ SOFTWARE.
 ### 🗳️ التصويت على الميزات
 
 هل لديك اقتراح لميزة جديدة؟ 
-[صوّت هنا](https://github.com/repo/discussions/categories/feature-requests)
+[صوّت هنا](https://github.com/ttt0600/arabic-legal-judgment-system/discussions/categories/feature-requests)
 
 ---
 
@@ -497,12 +497,12 @@ SOFTWARE.
 
 ### 📈 إحصائيات المشروع
 
-![GitHub Stars](https://img.shields.io/github/stars/your-repo/arabic-legal-judgment-system?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/your-repo/arabic-legal-judgment-system?style=social)
-![GitHub Issues](https://img.shields.io/github/issues/your-repo/arabic-legal-judgment-system)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/your-repo/arabic-legal-judgment-system)
-![Contributors](https://img.shields.io/github/contributors/your-repo/arabic-legal-judgment-system)
-![Last Commit](https://img.shields.io/github/last-commit/your-repo/arabic-legal-judgment-system)
+![GitHub Stars](https://img.shields.io/github/stars/arabic-legal-judgment-system/arabic-legal-judgment-system?style=social)
+![GitHub Forks](https://img.shields.io/github/forks/arabic-legal-judgment-system/arabic-legal-judgment-system?style=social)
+![GitHub Issues](https://img.shields.io/github/issues/arabic-legal-judgment-system/arabic-legal-judgment-system)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/arabic-legal-judgment-system/arabic-legal-judgment-system)
+![Contributors](https://img.shields.io/github/contributors/arabic-legal-judgment-system/arabic-legal-judgment-system)
+![Last Commit](https://img.shields.io/github/last-commit/arabic-legal-judgment-system/arabic-legal-judgment-system)
 
 ### 💻 الكود
 
@@ -572,7 +572,7 @@ SOFTWARE.
 
 ### 💻 الكود
 
-- [GitHub Repository](https://github.com/your-repo/arabic-legal-judgment-system)
+- [GitHub Repository](https://github.com/arabic-legal-judgment-system/arabic-legal-judgment-system)
 - [npm Package](https://www.npmjs.com/package/arabic-legal-system)
 - [PyPI Package](https://pypi.org/project/arabic-legal-system/)
 - [Docker Hub](https://hub.docker.com/r/yourname/legal-system)
@@ -654,7 +654,7 @@ SOFTWARE.
 # ثلاث خطوات بسيطة للبدء:
 
 # 1. استنساخ المشروع
-git clone https://github.com/your-repo/arabic-legal-judgment-system.git
+git clone https://github.com/arabic-legal-judgment-system/arabic-legal-judgment-system.git
 
 # 2. تشغيل الإعداد التلقائي
 cd arabic-legal-judgment-system
@@ -669,8 +669,8 @@ python setup.py
 لديك سؤال؟ اقتراح؟ مشكلة؟
 
 📧 support@legal-system.com  
-💬 [GitHub Discussions](https://github.com/repo/discussions)  
-🐛 [Report an Issue](https://github.com/repo/issues)
+💬 [GitHub Discussions](https://github.com/ttt0600/arabic-legal-judgment-system/discussions)  
+🐛 [Report an Issue](https://github.com/ttt0600/arabic-legal-judgment-system/issues)
 
 ---
 

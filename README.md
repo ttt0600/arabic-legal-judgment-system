@@ -44,7 +44,7 @@
 ### الطريقة 1: التلقائية (موصى بها)
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ttt0600/arabic-legal-judgment-system.git
 cd arabic-legal-judgment-system
 python setup.py
 ```
@@ -212,13 +212,13 @@ npm test
 
 ## 🐛 الإبلاغ عن الأخطاء
 
-وجدت خطأ؟ [افتح Issue](https://github.com/repo/issues)
+وجدت خطأ؟ [افتح Issue](https://github.com/ttt0600/arabic-legal-judgment-system/issues)
 
 ## 📞 الدعم
 
 - 📧 البريد: support@legal-system.com
-- 💬 المناقشات: [GitHub Discussions](https://github.com/repo/discussions)
-- 📚 الوثائق: [Wiki](https://github.com/repo/wiki)
+- 💬 المناقشات: [GitHub Discussions](https://github.com/ttt0600/arabic-legal-judgment-system/discussions)
+- 📚 الوثائق: [Wiki](https://github.com/ttt0600/arabic-legal-judgment-system/wiki)
 
 ## 🗺️ خريطة الطريق
 

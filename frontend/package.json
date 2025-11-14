@@ -22,5 +22,14 @@
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.4",
     "vite": "^4.4.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttt0600/arabic-legal-judgment-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ttt0600/arabic-legal-judgment-system/issues"
+  },
+  "homepage": "https://github.com/ttt0600/arabic-legal-judgment-system#readme",
+  "author": "ttt0600"
 }
